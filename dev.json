@@ -1,0 +1,6 @@
+{
+  "log_config": {
+    "level": "debug"
+  },
+  "port": 1000
+}
