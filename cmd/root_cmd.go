@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/rybit/config_example/conf"
@@ -27,6 +26,10 @@ func run(cmd *cobra.Command, args []string) {
 		log.Fatal("Failed to load config: " + err.Error())
 	}
 
-	_ = config
-	fmt.Println("--- here ---")
+	logger, err := conf.ConfigureLogging(&config.LogConfig)
+	if err != nil {
+		log.Fatal("Failed to configure logging: " + err.Error())
+	}
+
+	logger.Infof("Starting with config: %+v", config)
 }

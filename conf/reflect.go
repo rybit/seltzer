@@ -16,7 +16,6 @@ func populateConfig(config *Config) (*Config, error) {
 		return nil, err
 	}
 
-	fmt.Printf("%+v\n", config)
 	return config, nil
 }
 
@@ -66,14 +65,10 @@ func getTag(field reflect.StructField) string {
 	// check if maybe we have a special magic tag
 	tag := field.Tag
 	if tag != "" {
-		// maybe it is ours
-		if v := tag.Get(tagPrefix); v != "" {
-			return v
-		}
-
-		// maybe it is the general json one?
-		if v := tag.Get("json"); v != "" {
-			return v
+		for _, prefix := range []string{tagPrefix, "mapstructure", "json"} {
+			if v := tag.Get(prefix); v != "" {
+				return v
+			}
 		}
 	}
 

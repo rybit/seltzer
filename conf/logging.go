@@ -31,11 +31,13 @@ func ConfigureLogging(config *LoggingConfig) (*logrus.Entry, error) {
 		logrus.SetOutput(bufio.NewWriter(f))
 	}
 
-	level, err := logrus.ParseLevel(strings.ToUpper(config.Level))
-	if err != nil {
-		return nil, err
+	if config.Level != "" {
+		level, err := logrus.ParseLevel(strings.ToUpper(config.Level))
+		if err != nil {
+			return nil, err
+		}
+		logrus.SetLevel(level)
 	}
-	logrus.SetLevel(level)
 
 	// always use the fulltimestamp
 	logrus.SetFormatter(&logrus.TextFormatter{

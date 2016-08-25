@@ -1,20 +1,18 @@
 package conf
 
 import (
-	"fmt"
 	"strings"
 
-	"github.com/benoitmasson/viper"
+	//"github.com/benoitmasson/viper"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // Config TODO
 type Config struct {
-	Port         int64
-	JSONAndViper string `json:"doggy" viper:"kitty"`
-	OnlyJSON     string `json:"marp"`
-	OnlyViper    string `viper:"danger"`
-	LogConfig    LoggingConfig
+	Port      int64
+	Config    string
+	LogConfig LoggingConfig
 }
 
 // LoadConfig TODO
@@ -40,17 +38,13 @@ func LoadConfig(cmd *cobra.Command) (*Config, error) {
 		return nil, err
 	}
 
-	viper.SetDefault("logconfig.file", "info")
-	viper.SetDefault("logconfig.level", "thing")
-	config := new(Config)
-	if err := viper.Unmarshal(config); err != nil {
-		return nil, err
-	}
+	//viper.SetDefault("logconfig.file", "")
+	//viper.SetDefault("logconfig.level", "info")
+	//config := new(Config)
+	//if err := viper.Unmarshal(config); err != nil {
+	//	return nil, err
+	//}
+	//return config, nil
 
-	fmt.Println("level: " + viper.GetString("logconfig.level"))
-	fmt.Println("file: " + viper.GetString("logconfig.file"))
-
-	fmt.Printf("config: %+v\n", config)
-
-	return config, nil
+	return populateConfig(new(Config))
 }
