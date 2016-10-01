@@ -41,7 +41,9 @@ func recursivelySet(val reflect.Value, prefix string) error {
 
 		switch thisField.Kind() {
 		case reflect.Struct:
-			recursivelySet(thisField.Addr(), tag+".")
+			if err := recursivelySet(thisField.Addr(), tag+"."); err != nil {
+				return err
+			}
 		case reflect.Int:
 			fallthrough
 		case reflect.Int32:
@@ -51,8 +53,9 @@ func recursivelySet(val reflect.Value, prefix string) error {
 			configVal := int64(viper.GetInt(tag))
 			thisField.SetInt(configVal)
 		case reflect.String:
-			configVal := viper.GetString(tag)
-			thisField.SetString(configVal)
+			thisField.SetString(viper.GetString(tag))
+		case reflect.Bool:
+			thisField.SetBool(viper.GetBool(tag))
 		default:
 			return fmt.Errorf("unexpected type detected ~ aborting: %s", thisField.Kind())
 		}
