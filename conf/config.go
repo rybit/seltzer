@@ -11,7 +11,7 @@ import (
 // Config the application's configuration
 type Config struct {
 	Port      int64
-	Config    string
+	JWTSecret string
 	LogConfig LoggingConfig
 }
 

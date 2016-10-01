@@ -6,3 +6,11 @@ import:
 - package: github.com/spf13/viper
 - package: github.com/benoitmasson/viper
   version: nested-maps
+- package: github.com/rs/cors
+  version: v1.0
+- package: github.com/guregu/kami
+  version: v2.1.0
+- package: github.com/pborman/uuid
+  version: v1.0
+- package: github.com/dgrijalva/jwt-go
+  version: v3.0.0
