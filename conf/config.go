@@ -3,7 +3,6 @@ package conf
 import (
 	"strings"
 
-	//"github.com/benoitmasson/viper"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -11,7 +10,7 @@ import (
 // Config the application's configuration
 type Config struct {
 	Port      int64
-	Config    string
+	JWTSecret string
 	LogConfig LoggingConfig
 }
 

@@ -1,8 +1,8 @@
-hash: 4ad0c28f15c4e7df2e95feee0b89a08f779a6a9b4206f441e928d879776d6b80
-updated: 2016-08-25T11:04:55.931381489-07:00
+hash: 34169a7f01b71d688d77bb1ad0acc3494f88b1b65c995a86be11cb843c2a153a
+updated: 2016-10-01T11:27:37.536467164-07:00
 imports:
-- name: github.com/benoitmasson/viper
-  version: 9141a0a8b3d2d0c4f1563ab3fb6aac8143698635
+- name: github.com/dgrijalva/jwt-go
+  version: d2709f9f1f31ebcda9651b03077758c1f3a0018c
 - name: github.com/fsnotify/fsnotify
   version: f12c6236fe7b5cf6bcf30e5935d08cb079d78334
 - name: github.com/hashicorp/hcl
@@ -20,8 +20,26 @@ imports:
   version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
 - name: github.com/kr/fs
   version: 2788f0dbd16903de03cb8186e5c7d97b69ad387b
+- name: github.com/labstack/echo
+  version: 04e6901d05b58ddbae579a6252a3d1bb3f334adc
+  subpackages:
+  - middleware
+  - context
+  - engine
+  - log
+- name: github.com/labstack/gommon
+  version: f3b1a1b3bd4726161e1200863d278df7da5e66ff
+  subpackages:
+  - log
+  - bytes
+  - color
+  - random
 - name: github.com/magiconair/properties
   version: 61b492c03cf472e0c6419be5899b8e0dc28b1b88
+- name: github.com/mattn/go-colorable
+  version: 6c903ff4aa50920ca86087a280590b36b3152b9c
+- name: github.com/mattn/go-isatty
+  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
 - name: github.com/mitchellh/mapstructure
   version: ca63d7c062ee3c9f34db231e352b60012b4fd0c1
 - name: github.com/pelletier/go-buffruneio
@@ -49,6 +67,12 @@ imports:
   version: 103ce5cd2042f2fe629c1957abb64ab3e7f50235
 - name: github.com/spf13/viper
   version: 7fb2782df3d83e0036cc89f461ed0422628776f4
+- name: github.com/stretchr/testify
+  version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
+  subpackages:
+  - assert
+- name: github.com/valyala/fasttemplate
+  version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/crypto
   version: 351dc6a5bf92a5f2ae22fadeee08eb6a45aa2d93
   subpackages:
@@ -56,6 +80,10 @@ imports:
   - curve25519
   - ed25519
   - ed25519/internal/edwards25519
+- name: golang.org/x/net
+  version: cd95c68ba21fc7ee16ee38cc420473e3d8c4afd8
+  subpackages:
+  - context
 - name: golang.org/x/sys
   version: a646d33e2ee3172a661fc09bca23bb4889a41bc8
   subpackages:
@@ -67,4 +95,12 @@ imports:
   - unicode/norm
 - name: gopkg.in/yaml.v2
   version: e4d366fc3c7938e2958e662b4258c7a89e1f0e3e
-testImports: []
+testImports:
+- name: github.com/davecgh/go-spew
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  subpackages:
+  - spew
+- name: github.com/pmezard/go-difflib
+  version: d8ed2627bdf02c080bf22230dbb337003b7aba2d
+  subpackages:
+  - difflib
