@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/rybit/seltzer/cmd"
+	"github.com/netlify/netlify-subscriptions/cmd"
 )
 
 func main() {

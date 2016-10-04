@@ -1,4 +1,4 @@
-package: github.com/rybit/seltzer
+package: github.com/netlify/netlify-subscriptions
 import:
 - package: github.com/Sirupsen/logrus
   version: v0.10.0

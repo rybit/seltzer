@@ -14,7 +14,7 @@ import (
 	"github.com/rs/cors"
 	"golang.org/x/net/context"
 
-	"github.com/rybit/seltzer/conf"
+	"github.com/netlify/netlify-subscriptions/conf"
 )
 
 type API struct {

@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rybit/seltzer/conf"
+	"github.com/netlify/netlify-subscriptions/conf"
 
 	"golang.org/x/net/context"
 )
