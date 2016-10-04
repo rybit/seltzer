@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rybit/config_example/conf"
+	"github.com/rybit/seltzer/conf"
 
 	"golang.org/x/net/context"
 )

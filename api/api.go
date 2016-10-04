@@ -14,7 +14,7 @@ import (
 	"github.com/rs/cors"
 	"golang.org/x/net/context"
 
-	"github.com/rybit/config_example/conf"
+	"github.com/rybit/seltzer/conf"
 )
 
 type API struct {
