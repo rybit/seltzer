@@ -1,4 +1,4 @@
-package: github.com/rybit/config_example
+package: github.com/rybit/seltzer
 import:
 - package: github.com/Sirupsen/logrus
   version: v0.10.0
