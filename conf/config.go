@@ -11,6 +11,7 @@ import (
 // Config the application's configuration
 type Config struct {
 	Port      int64         `json:"port"`
+	JWTSecret string        `json:"jwt_secret"`
 	LogConfig LoggingConfig `json:"log"`
 }
 

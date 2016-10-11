@@ -3,5 +3,6 @@
   "log": {
     "file": "",
     "level": "debug"
-  }
+  },
+  "jwt_secret": "secret"
 }

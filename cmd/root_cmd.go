@@ -35,10 +35,8 @@ func run(cmd *cobra.Command, args []string) {
 		log.Fatal("Failed to configure logging: " + err.Error())
 	}
 
-	logger.Infof("Starting with config: %+v", config)
-
 	server := api.NewAPI(logger, config)
-
+	logger.Infof("Starting up server on port %d", config.Port)
 	if err := server.Start(); err != nil {
 		logger.WithError(err).Error("Error while running server")
 		os.Exit(1)

@@ -10,3 +10,7 @@ import:
   subpackages:
   - assert
 - package: github.com/spf13/cobra
+- package: github.com/dgrijalva/jwt-go
+  version: v3.0.0
+- package: github.com/pborman/uuid
+  version: v1.0

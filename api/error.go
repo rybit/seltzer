@@ -7,6 +7,10 @@ import (
 )
 
 func (api *API) handleError(err error, ctx echo.Context) {
+	if ctx.Response().Committed() {
+		return
+	}
+
 	httpErr, ok := err.(*echo.HTTPError)
 	if ok {
 		ctx.JSON(httpErr.Code, httpErr)
