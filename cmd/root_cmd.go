@@ -3,8 +3,12 @@ package cmd
 import (
 	"log"
 
-	"github.com/rybit/seltzer/conf"
 	"github.com/spf13/cobra"
+
+	"os"
+
+	"github.com/rybit/seltzer/api"
+	"github.com/rybit/seltzer/conf"
 )
 
 var rootCmd = cobra.Command{
@@ -32,4 +36,11 @@ func run(cmd *cobra.Command, args []string) {
 	}
 
 	logger.Infof("Starting with config: %+v", config)
+
+	server := api.NewAPI(logger, config)
+
+	if err := server.Start(); err != nil {
+		logger.WithError(err).Error("Error while running server")
+		os.Exit(1)
+	}
 }

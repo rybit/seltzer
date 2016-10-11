@@ -1,28 +1,28 @@
 package conf
 
 import (
+	"os"
 	"strings"
 
-	//"github.com/benoitmasson/viper"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 // Config the application's configuration
 type Config struct {
-	Port      int64
-	Config    string
-	LogConfig LoggingConfig
+	Port      int64         `json:"port"`
+	LogConfig LoggingConfig `json:"log"`
 }
 
 // LoadConfig loads the config from a file if specified, otherwise from the environment
 func LoadConfig(cmd *cobra.Command) (*Config, error) {
-	err := viper.BindPFlags(cmd.Flags())
-	if err != nil {
+	viper.SetConfigType("json") // necessary in the event that we are using file-less config
+
+	if err := viper.BindPFlags(cmd.Flags()); err != nil {
 		return nil, err
 	}
 
-	viper.SetEnvPrefix("NETLIFY")
+	viper.SetEnvPrefix("SETLZER")
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.AutomaticEnv()
 
@@ -31,12 +31,17 @@ func LoadConfig(cmd *cobra.Command) (*Config, error) {
 	} else {
 		viper.SetConfigName("config")
 		viper.AddConfigPath("./")
-		viper.AddConfigPath("$HOME/.example")
+		viper.AddConfigPath("$HOME/.seltzer")
 	}
 
-	if err := viper.ReadInConfig(); err != nil {
+	if err := viper.ReadInConfig(); err != nil && !os.IsNotExist(err) {
 		return nil, err
 	}
 
-	return populateConfig(new(Config))
+	config := new(Config)
+	if err := viper.Unmarshal(config); err != nil {
+		return nil, err
+	}
+
+	return populateConfig(config)
 }
