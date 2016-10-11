@@ -4,5 +4,3 @@ import:
   version: v0.10.0
 - package: github.com/spf13/cobra
 - package: github.com/spf13/viper
-- package: github.com/benoitmasson/viper
-  version: nested-maps

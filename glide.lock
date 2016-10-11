@@ -1,8 +1,6 @@
-hash: 4ad0c28f15c4e7df2e95feee0b89a08f779a6a9b4206f441e928d879776d6b80
-updated: 2016-08-25T11:04:55.931381489-07:00
+hash: 0b4e5835f4cfefbd66ce83625e17867914c0e4b33ee7ecd9460705852a5d7755
+updated: 2016-10-11T08:08:55.281677449-07:00
 imports:
-- name: github.com/benoitmasson/viper
-  version: 9141a0a8b3d2d0c4f1563ab3fb6aac8143698635
 - name: github.com/fsnotify/fsnotify
   version: f12c6236fe7b5cf6bcf30e5935d08cb079d78334
 - name: github.com/hashicorp/hcl
