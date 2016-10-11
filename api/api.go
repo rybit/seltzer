@@ -41,6 +41,7 @@ func NewAPI(log *logrus.Entry, config *conf.Config) *API {
 	e := echo.New()
 	e.Get("/info", api.Info)
 
+	e.SetHTTPErrorHandler(api.handleError)
 	e.SetLogger(wrapper{api.log})
 	api.echo = e
 

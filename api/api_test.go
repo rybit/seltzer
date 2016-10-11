@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/labstack/echo"
 	"github.com/labstack/echo/test"
 	"github.com/rybit/seltzer/conf"
 	"github.com/stretchr/testify/assert"
@@ -38,13 +39,23 @@ func TestInfoEndpoint(t *testing.T) {
 }
 
 func TestMissingEndpoint(t *testing.T) {
-	code, _ := request(t, "GET", "/missing", nil)
+	code, body := request(t, "GET", "/missing", nil)
 	assert.Equal(t, http.StatusNotFound, code)
+	err := extractError(t, body)
+	assert.Equal(t, http.StatusNotFound, err.Code)
+	assert.NotEmpty(t, err.Message)
 }
 
 // ------------------------------------------------------------------------------------------------
 // Helpers
 // ------------------------------------------------------------------------------------------------
+
+func extractError(t *testing.T, body string) *echo.HTTPError {
+	raw := new(echo.HTTPError)
+	err := json.Unmarshal([]byte(body), &raw)
+	assert.NoError(t, err)
+	return raw
+}
 
 func extractRawPayload(t *testing.T, body string) map[string]interface{} {
 	raw := map[string]interface{}{}
